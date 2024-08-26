@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-light;
+        font-size: 16px;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply text-secondary bg-primary rounded-md py-3 px-3.5 font-semibold;
+
+        &[disabled] {
+            @apply text-gray-300 bg-primary-lighter;
+        }
+    }
+
+    .btn-primary-light {
+        @apply text-primary bg-primary-light rounded-md py-3 px-3.5 font-semibold;
+
+        &[disabled] {
+            @apply text-gray-300 bg-primary-lighter;
+        }
+    }
+
+    .btn-tag {
+        @apply text-primary bg-primary-light rounded-[20px]
+        px-3.5 py-2
+        leading-4 text-sm
+        hover:text-secondary hover:bg-primary
+        active:text-secondary active:bg-primary;
+
+        &.--active {
+            @apply text-secondary bg-primary;
+        }
+
+        @apply md:text-base;
+
+    }
+
+    .btn-dark {
+        @apply text-secondary bg-black rounded-[6px] px-3.5 py-2 leading-4 font-semibold
+        hover:text-primary hover:bg-dark-light
+        active:text-primary active:bg-dark-light;
+
+        &.router-link-active, &.router-link-exact-active {
+            @apply text-primary bg-dark-light;
+        }
+    }
+
+    .input-search {
+        input {
+            @apply w-full h-10 px-8 py-3 leading-3
+            rounded-[6px] bg-primary-lighter;
+
+            border-color: transparent;
+            border-width: 1px;
+
+            @apply focus-visible:shadow-outline
+            focus-visible:border-primary
+            outline-none
+            hover:border-primary;
+        }
+
+        *:has(+ input), input + * {
+            @apply absolute top-3 flex items-center text-neutral;
+        }
+
+        *:has(+ input) {
+            @apply left-2.5;
+        }
+
+        input + * {
+            @apply right-2.5 my-auto;
+        }
+    }
+
+    .input-comment {
+        position: relative;
+
+        textarea {
+            @apply py-3.5 pl-3.5 pr-8 w-full text-sm
+            border-light border
+            rounded-md h-[52px]
+            resize-none;
+
+            @apply hover:border-primary;
+
+
+            &.--error {
+                @apply focus-visible:shadow-outline-error
+                focus-visible:border-red
+                outline-none;
+            }
+
+            &.--focus {
+                @apply shadow-outline
+                border-primary
+                outline-none h-[130px];
+            }
+        }
+    }
+
+    .layout-modal {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        backdrop-filter: brightness(0.8);
+        overflow: auto;
+
+        @apply z-30 py-[100px] px-4;
+    }
+}
+
+@layer utilities {
+    .shadow-outline {
+        box-shadow: 0px 0px 0px 2px rgba(62, 151, 255, 0.32) ;
+
+    }
+
+    .shadow-outline-error {
+        box-shadow: 0px 0px 0px 2px rgba(241, 65, 108, 0.32);
+    }
+
+    .upside-down-transition {
+        &.--active {
+            transform: scaleY(-1);
+        }
+    }
+}
